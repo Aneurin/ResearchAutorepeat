@@ -1,4 +1,8 @@
 function OnMsg.TechResearched(tech_id, city)
+    if GameTime() == 0 then
+        -- We're triggering on the free research from a sponsor/commander
+        return
+    end
     if city:IsTechRepeatable(tech_id) then
         if #city:GetResearchQueue() == 0 then
             city:QueueResearch(tech_id)
